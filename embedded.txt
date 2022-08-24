@@ -1,0 +1,72 @@
+- ISA: instructure set architecture
+- RTL: register transfer level
+- CPLD: complex programmable logic device 
+- CS: ship select 
+- OE: output enable 
+
+- microcontrollers:
+	- self contained system with peripherals such as memory,I/O 
+
+- Neumann vs Harvard:
+	- Neumann : comman memory for data and instructions, fethching data and instructions cannot happen at the same time
+	- Harvard: data and instructions are stored in different areas, fetching the data and instructions can happen at the same time 
+
+	- Hardvard: 
+
+- bus: 	it is a collection if wires. It can be divided to 3 categories data, address and control
+		data : signal which is moved : imagine it as if it is the voice which is transfered in the phone 
+		address : where the data is coming from or going to. u can imagine it as if it is the number of a phone 
+		control : how the data is transported. ring as indication one is calling 
+		width of bus : how many wires are the bus made of 8 , 16, 32
+- register: high speed memory. store frequent used values 
+- DSP: digital singal processor. has the ability to perform arithmetic operation that why he has MAC where multiply is performed in a single operation 
+- word size:  in 32-bit machine the word size is 32 bits while in 64 bits the word would be 64 bits 
+big/little endian: big endian is like arabic the word started from the right 
+- memory: RAM(Random Access Memory) and ROM(Read Only Memory)
+	- RAM: u donot have to access the memory in sequence 
+	- DRAM: it need refresh as it used charger which might leak. that is why is slower than SRAM
+	- SRAM: it has latch that is why is faster than DRAM 
+	- ROM: only read data 
+	- PROM: it can be programmed only once
+	- EPROM: erasable PROM. it can be reprogrammed using ultraviolet 
+	- EEPROM: electrically ersable 
+
+- Address encoder: convert the address signals multiple wires to index of an array so u can select the memory
+- to access 1KB memory u need 10 address lines as 2^10 = 1024 bytes 
+- if u need to use multiple chips to store data the address should also control ship select 
+
+- memory map: specifiy the allocation and the use of each physical memory space
+- memory mapped I/O: the I/O would share a portion of system memory so the CPU would w/r the I/O as if it was a normal memory
+- port Mapped I/O: there is extra pin in the cpu which is made for the I/O. and there is a dedicated structure for I/O operations 
+
+- bit manipulation:
+	- if u want to check if a bit is active 
+		- 0x01 << 5  check if the bit number 5 index start from 0
+	- reset a specific bit
+		porta = porta & ~(0x01<<5)
+	- to check a pattern:
+		- and with mask where all the interested bits are 1 
+		- xor with the pattern
+		- not the result
+	- shift left is like multiple by 2
+	- shift right is like divide by 2
+	- if u want to multiple by something else rather than 2 u can add the number 
+		ex:
+			- result = (number << 2) + number  multiple by 2 using shift left + adding the original value means multiple by 5
+
+- interrupt:
+	- it is like function but it happens asynchronous
+	- there are three major parts of interrupt:
+		- interrupt source
+		- interrupt service routine ISR
+		- interrupt vector table
+
+- scheduler stragtey:
+	- multiprogramming: run the task till the task sleep
+	- real time: task are gurananted to executed before the deadline 
+	- time sharing: timer is used to preempt the task after a certain time
+
+- access:
+	- supervisor: can access the whole memory and execute all instructions
+	- usermode: access only the user address space and does not have all instructions
+
